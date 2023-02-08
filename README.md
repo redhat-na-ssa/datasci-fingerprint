@@ -8,6 +8,7 @@ A fingerprint dataset used to explore the various data science tools on the Red 
 ### Prerequisites
 
 - [x] Python 3.6+
+- [x] Bash Shell
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

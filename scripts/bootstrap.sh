@@ -2,17 +2,11 @@
 #set -e
 
 usage(){
-  # echo "
-  # setup virtualenv:
-  # python3 -m venv venv
-  # "
-
 echo "
 You can run individual functions!
 
 example:
   setup_demo
-  delete_demo
 "
 }
 
@@ -43,7 +37,7 @@ setup_dataset(){
   SCRATCH=scratch
   DATA_SRC=https://github.com/redhat-na-ssa/demo-rosa-sagemaker-data.git
   
-  echo "Pulling dataset from ${DATA_SRC} (gross)..."
+  echo "Pulling dataset from ${DATA_SRC}..."
 
   git clone "${DATA_SRC}" "${SCRATCH}"/.raw >/dev/null 2>&1 || echo "exists"
 
@@ -56,9 +50,27 @@ setup_dataset(){
 
 }
 
+setup_jupyter(){
+  pip install -qr requirements.txt
+}
+
+print_info(){
+  echo "
+  Run the following:
+
+  # activate python virtual env (bash)
+  source venv/bin/activate
+
+  # blastoff w/ jupyter
+  jupyter-lab
+  "
+}
+
 setup_demo(){
   check_venv
   setup_dataset  
+  setup_jupyter
+  print_info
 }
 
 is_sourced && usage || setup_demo
