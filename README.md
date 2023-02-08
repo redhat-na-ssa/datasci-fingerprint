@@ -10,6 +10,12 @@ A fingerprint dataset used to explore the various data science tools on the Red 
 - [x] Python 3.6+
 - [x] Bash Shell
 
+## Quickstart
+
+```
+scripts/bootstrap.sh
+```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Acknowledgements
