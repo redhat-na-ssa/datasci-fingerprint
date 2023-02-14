@@ -35,7 +35,7 @@ check_venv(){
 
 setup_dataset(){
   SCRATCH=scratch
-  DATA_SRC=https://github.com/redhat-na-ssa/demo-datasci-fingerprint-data.git
+  DATA_SRC=https://github.com/redhat-na-ssa/datasci-fingerprint-data.git
   
   echo "Pulling dataset from ${DATA_SRC}..."
 
