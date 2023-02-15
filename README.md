@@ -1,7 +1,7 @@
 datasci-fingerprint
 ==============================
 
-dataset creation, model building and training strategies for a fingerprint prediction model to predict attributes from unseen fingerprints
+This repository includes the notebook and scripts that data scientists perform for dataset creation, model building and model training strategies for 1:N processors (CPU or GPU) to create a fingerprint attribute prediction model.
 
 Project Organization
 ------------
@@ -9,11 +9,9 @@ Project Organization
     ├── LICENSE
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
     ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
+    │   ├── train          <- Training augmented fingerprints for model learning. gitignored.
+    │   ├── real           <- Real fingerprints to test predictions mimicing production. gitignored.
+    │   └── README.md      <- Separate repo for data.
     │
     ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
     │
