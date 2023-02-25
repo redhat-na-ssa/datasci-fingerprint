@@ -1,0 +1,114 @@
+# oc policy add-role-to-user system:image-puller system:serviceaccount:chaosmonkey:default --namespace=redhat-ods-applications
+apiVersion: v1
+items:
+- apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    annotations:
+      openshift.io/host.generated: "true"
+    creationTimestamp: "2023-02-25T01:19:43Z"
+    labels:
+      app: tensorflow
+      app.kubernetes.io/component: tensorflow
+      app.kubernetes.io/instance: tensorflow
+      app.kubernetes.io/name: tensorflow
+      app.kubernetes.io/part-of: tensorflow-app
+    name: tensorflow
+  spec:
+    port:
+      targetPort: 8080-tcp
+    tls:
+      insecureEdgeTerminationPolicy: Redirect
+      termination: edge
+    to:
+      kind: Service
+      name: tensorflow
+      weight: 100
+    wildcardPolicy: None
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      alpha.image.policy.openshift.io/resolve-names: '*'
+      app.openshift.io/route-disabled: "false"
+      deployment.kubernetes.io/revision: "8"
+      image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"tensorflow:py3.8-cuda-11.4.2-2","namespace":"redhat-ods-applications"},"fieldPath":"spec.template.spec.containers[?(@.name==\"tensorflow\")].image","pause":"false"}]'
+      openshift.io/generated-by: OpenShiftWebConsole
+    labels:
+      app: tensorflow
+      app.kubernetes.io/component: tensorflow
+      app.kubernetes.io/instance: tensorflow
+      app.kubernetes.io/name: tensorflow
+      app.kubernetes.io/part-of: tensorflow-app
+      app.openshift.io/runtime: tensorflow
+      app.openshift.io/runtime-namespace: redhat-ods-applications
+      app.openshift.io/runtime-version: py3.8-cuda-11.4.2-2
+    name: tensorflow
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: tensorflow
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          openshift.io/generated-by: OpenShiftWebConsole
+        creationTimestamp: null
+        labels:
+          app: tensorflow
+          deployment: tensorflow
+      spec:
+        containers:
+        - env:
+          - name: NOTEBOOK_PORT
+            value: "8080"
+          - name: JUPYTER_TOKEN
+            value: thisisfine
+          image: quay.io/modh/cuda-notebooks@sha256:2163ba74f602ec4b3049a88dcfa4fe0a8d0fff231090001947da66ef8e75ab9a
+          imagePullPolicy: IfNotPresent
+          name: tensorflow
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        nodeSelector:
+          nvidia.com/gpu.present: "true"
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftWebConsole
+    labels:
+      app: tensorflow
+      app.kubernetes.io/component: tensorflow
+      app.kubernetes.io/instance: tensorflow
+      app.kubernetes.io/name: tensorflow
+      app.kubernetes.io/part-of: tensorflow-app
+    name: tensorflow
+  spec:
+    ports:
+    - name: 8080-tcp
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: tensorflow
+      deployment: tensorflow
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
