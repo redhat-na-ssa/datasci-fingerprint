@@ -45,8 +45,7 @@ oc expose service \
 oc get route "${APP_NAME}" -o jsonpath='{"https://"}{.status.ingress[0].host}{"\n"}'
 
 # run on nvidia gpu nodes
-oc patch "deployment/${APP_NAME}" -p {"spec": {"template": {"spec": {"nodeSelector": {"nvidia.com/gpu.present": "true"}}}}}
-
+oc patch "deployment/${APP_NAME}" -p '{"spec": {"template": {"spec": {"nodeSelector": {"nvidia.com/gpu.present": "true"}}}}}'
 ```
 
 ```
