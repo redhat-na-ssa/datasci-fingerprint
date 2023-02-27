@@ -12,7 +12,7 @@ oc new-project standalone-notebooks \
   --display-name "Standalone Jupyter Notebooks"
 
 # setup gpu-notebook container
-CONTAINER_IMAGE=quay.io/modh/cuda-notebooks:py3.8-cuda-11.4.2-2
+CONTAINER_IMAGE="quay.io/modh/cuda-notebooks:cuda-jupyter-tensorflow-ubi9-python-3.9"
 APP_NAME=gpu-notebook
 APP_LABEL="app.kubernetes.io/part-of=${APP_NAME}"
 
@@ -22,8 +22,8 @@ oc new-app \
   -l "${APP_LABEL}"
 
 # setup env vars for gpu-notebook
-cat notebook.env | \
-  oc set env -e - "deployment/${APP_NAME}"
+# cat notebook.env | \
+#   oc set env -e - "deployment/${APP_NAME}"
 
 oc set env \
   "deployment/${APP_NAME}" \
@@ -31,10 +31,10 @@ oc set env \
   -e JUPYTER_TOKEN="thisisfine"
 
 # create service
-oc expose deployment \
-  "${APP_NAME}" \
-  --port 8080 \
-  -l "${APP_LABEL}"
+# oc expose deployment \
+#  "${APP_NAME}" \
+#  --port 8080 \
+#  -l "${APP_LABEL}"
 
 # create route
 oc expose service \
@@ -42,7 +42,10 @@ oc expose service \
   --overrides='{"spec":{"tls":{"termination":"edge"}}}' \
   -l "${APP_LABEL}"
 
-oc get route tensorflow -o jsonpath='{"https://"}{.status.ingress[0].host}{"\n"}'
+oc get route "${APP_NAME}" -o jsonpath='{"https://"}{.status.ingress[0].host}{"\n"}'
+
+# run on nvidia gpu nodes
+oc patch "deployment/${APP_NAME}" -p {"spec": {"template": {"spec": {"nodeSelector": {"nvidia.com/gpu.present": "true"}}}}}
 
 ```
 
