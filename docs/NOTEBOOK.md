@@ -1,6 +1,5 @@
 # A collections of hacks
 
-
 ## Make all CUDA based GPUs work with a RHODS notebook
 
 Imperative `oc` commands
@@ -22,9 +21,6 @@ oc new-app \
   -l "${APP_LABEL}"
 
 # setup env vars for gpu-notebook
-# cat notebook.env | \
-#   oc set env -e - "deployment/${APP_NAME}"
-
 oc set env \
   "deployment/${APP_NAME}" \
   -e NOTEBOOK_PORT="8080" \
@@ -43,9 +39,6 @@ oc expose service \
   -l "${APP_LABEL}"
 
 oc get route "${APP_NAME}" -o jsonpath='{"https://"}{.status.ingress[0].host}{"\n"}'
-
-# run on nvidia gpu nodes
-oc patch "deployment/${APP_NAME}" -p '{"spec": {"template": {"spec": {"nodeSelector": {"nvidia.com/gpu.present": "true"}}}}}'
 ```
 
 ```
@@ -58,4 +51,10 @@ oc set volume \
   -t pvc \
   --claim-size=5G \
   --overwrite
+```
+
+```
+# run on nvidia gpu nodes
+oc patch "deployment/${APP_NAME}" \
+  -p '{"spec": {"template": {"spec": {"nodeSelector": {"nvidia.com/gpu.present": "true"}}}}}'
 ```
