@@ -1,8 +1,6 @@
-# A collections of hacks
+# Create a Notebook
 
-## Make all CUDA based GPUs work with a RHODS notebook
-
-Imperative `oc` commands
+Imperative `oc` commands to create a notebook instance.
 
 ```
 # new project
