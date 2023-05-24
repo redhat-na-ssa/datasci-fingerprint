@@ -253,7 +253,7 @@
               "label": "4.0-dataset-create.ipynb",
               "image": "/notebook/rhods-notebooks/jupyter-nb-opentlc-2dmgr/static/elyra/notebook.svg",
               "x_pos": 680,
-              "y_pos": 342,
+              "y_pos": 345,
               "description": "Run notebook file"
             }
           },
@@ -297,6 +297,225 @@
               }
             }
           ]
+        },
+        {
+          "id": "5efafe6b-f579-44b2-8cce-49f6b640ddca",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [
+                {
+                  "env_var": "AWS_S3_ENDPOINT",
+                  "value": "minio.airflow.svc.cluster.local:9000"
+                },
+                {
+                  "env_var": "AWS_S3_BUCKET",
+                  "value": "fingerprint-left-right"
+                }
+              ],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "5.0-train-sequential-1-layer.ipynb",
+              "runtime_image": "quay.io/eformat/airflow-runner:2.5.1"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "5.0-train-sequential-1-layer.ipynb",
+              "image": "/notebook/rhods-notebooks/jupyter-nb-opentlc-2dmgr/static/elyra/notebook.svg",
+              "x_pos": 954,
+              "y_pos": 292,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "353866b5-9d65-4b6d-a02e-aabbc023d37c",
+                  "node_id_ref": "4391fca7-53f7-4ac2-8588-4e993b2b858e",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "a957cc8f-d84c-44ec-a4c6-585930904497",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [
+                {
+                  "env_var": "AWS_S3_ENDPOINT",
+                  "value": "minio.airflow.svc.cluster.local:9000"
+                },
+                {
+                  "env_var": "AWS_S3_BUCKET",
+                  "value": "fingerprint-left-right"
+                }
+              ],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "5.0-train-sequential-3-layer.ipynb",
+              "runtime_image": "quay.io/eformat/airflow-runner:2.5.1"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "5.0-train-sequential-3-layer.ipynb",
+              "image": "/notebook/rhods-notebooks/jupyter-nb-opentlc-2dmgr/static/elyra/notebook.svg",
+              "x_pos": 953,
+              "y_pos": 359,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "34bdc1d0-cef3-4530-8e01-84817f3fabbd",
+                  "node_id_ref": "4391fca7-53f7-4ac2-8588-4e993b2b858e",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "597c3a25-5565-4231-a27f-c2e08c19f77b",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [
+                {
+                  "env_var": "AWS_S3_ENDPOINT",
+                  "value": "http://minio.airflow.svc.cluster.local:9000"
+                },
+                {
+                  "env_var": "AWS_S3_BUCKET",
+                  "value": "fingerprint-left-right"
+                }
+              ],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "5.0-train-sequential-5-layer.ipynb",
+              "runtime_image": "quay.io/eformat/airflow-runner:2.5.1"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "5.0-train-sequential-5-layer.ipynb",
+              "image": "/notebook/rhods-notebooks/jupyter-nb-opentlc-2dmgr/static/elyra/notebook.svg",
+              "x_pos": 955,
+              "y_pos": 425,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "a449611f-0b44-4d2f-b184-dac444af02df",
+                  "node_id_ref": "4391fca7-53f7-4ac2-8588-4e993b2b858e",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
         }
       ],
       "app_data": {
@@ -309,11 +528,11 @@
           "name": "fingerprint-left-right",
           "runtime": "Apache Airflow",
           "pipeline_defaults": {
-            "mounted_volumes": [],
-            "kubernetes_tolerations": [],
-            "kubernetes_pod_labels": [],
-            "kubernetes_pod_annotations": [],
             "kubernetes_shared_mem_size": {},
+            "kubernetes_tolerations": [],
+            "mounted_volumes": [],
+            "kubernetes_pod_annotations": [],
+            "kubernetes_pod_labels": [],
             "env_vars": [],
             "kubernetes_secrets": []
           }
