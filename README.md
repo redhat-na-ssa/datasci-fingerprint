@@ -1,57 +1,24 @@
 datasci-fingerprint
 ==============================
 
-This repository includes the notebook and scripts that data scientists perform for dataset creation, model building and model training strategies for 1:N processors (CPU or GPU) to create a fingerprint attribute prediction model.
+![fingerprint-overview](datasci-fingerprint/docs/fingerprint-prediction.png)
 
-Project Organization
-------------
+# Fingerprint Left or Right Hand Prediction
 
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
-    │
-    ├── data
-    │   ├── train          <- Training augmented fingerprints for model learning. gitignored.
-    │   ├── real           <- Real fingerprints to test predictions mimicing production. gitignored.
-    │   └── README.md      <- Separate repo for data.
-    │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+## About the data
+Sokoto Coventry Fingerprint Dataset (SOCOFing) is a biometric fingerprint database designed for academic research purposes. SOCOFing is made up of 6,000 fingerprint images from 600 African subjects and contains unique attributes such as labels for gender, hand and finger name as well as synthetically altered versions with three different levels of alteration for obliteration, central rotation, and z-cut. For a complete formal description and usage policy please refer to the following paper: https://arxiv.org/abs/1807.10609.
 
+## About the notebooks
+The intention of this notebook is to demonstrate steps from data ingestion to model saving that provides an accurate enough model that predicts if a fingerprint comes from a left or right hand. Coupled with other models that accurately predict finger and gender is valuable when matching against other identifiable information.
 
---------
+1. *Data Ingestion* [from object storage](#working-with-s3-buckets)
+1. *Data Exploration* visualize, convert to arrays, counts
+1. *Create Datasets* split into train, validate, test
+1. *Experiment* use a default keras sequential model and see how it performs
+1. *Train and Tune* spend more resources to search for optimal parameters and fit a model
+1. *Prediction Sampling* in the notebook get a feel for predictions against real fingerprints
+
+## About pipeline
+Elyra is used to connects the notebooks and export a DAG pipeline.py code that can orchestrated with Airflow to automate the training when new data is available or on some event.
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
