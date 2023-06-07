@@ -5,3 +5,5 @@ tensorflow-metal~=0.8.0; sys_platform == 'darwin'
 pandas
 matplotlib
 scikit-learn
+imutils
+opencv-python
