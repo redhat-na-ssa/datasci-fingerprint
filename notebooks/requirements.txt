@@ -7,3 +7,4 @@ matplotlib
 scikit-learn
 imutils
 opencv-python
+visualkeras
