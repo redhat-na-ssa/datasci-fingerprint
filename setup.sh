@@ -34,7 +34,7 @@ check_venv(){
 
 
 setup_dataset(){
-  SCRATCH=../scratch
+  SCRATCH=scratch
   DATA_SRC=https://github.com/redhat-na-ssa/datasci-fingerprint-data.git
   
   echo "Pulling dataset from ${DATA_SRC}..."
@@ -51,7 +51,7 @@ setup_dataset(){
 }
 
 install_requirements(){
-  pip install -qr ../requirements.txt
+  pip install -qr requirements.txt
 }
 
 print_info(){
