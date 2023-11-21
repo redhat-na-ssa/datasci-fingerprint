@@ -29,11 +29,12 @@ def process_images_in_directory(input_directory, output_directory):
                 # Crop the image to [5:95, 5:91]
                 cropped_image = resized_image[CROP_TOP:CROP_BOT, CROP_L:CROP_R]
                 
-                #resized_image = cv2.resize(cropped_image, (96, 96))
-
+                # Convert the images to grayscale
+                grayscale_image = cv2.cvtColor(cropped_image, cv2.COLOR_BGR2GRAY)
+                
                 # Save the cropped and resized image to the output directory
                 output_path = os.path.join(output_directory, filename)
-                cv2.imwrite(output_path, cropped_image)
+                cv2.imwrite(output_path, grayscale_image)
 
                 print(f"Processed and saved {filename} to {output_path}")
             else:

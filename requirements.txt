@@ -7,3 +7,4 @@ nvidia-cublas-cu11
 nvidia-cudnn-cu11
 opencv-python~=4.8
 matplotlib~=3.7
+keras-tuner==1.4.6
