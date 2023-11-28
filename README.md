@@ -1,5 +1,4 @@
-Fingerprint prediction on unknown prints
-==============================
+# Fingerprint Prediction on Unknown Prints
 
 This tutorial demonstrates a basic machine learning workflow to create an image classifier that can predict human attributes from unknown fingerprints.
 
@@ -11,8 +10,13 @@ This tutorial demonstrates a basic machine learning workflow to create an image 
 1. Deploy to production
 1. Identify improvements
 
+<p><small>Project structure based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+
 ## Quick start
 
-Go to `notebooks` to get started.
+Go to [notebooks](notebooks) to get started
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+## Additional Resources
+
+- [Cornell University - Research Paper](https://arxiv.org/abs/1807.10609)
+- [Kaggle - Sokoto Coventry Fingerprint Dataset (SOCOFing)](https://www.kaggle.com/datasets/ruizgara/socofing)
