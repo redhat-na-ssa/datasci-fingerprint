@@ -1,8 +1,8 @@
 schemaVersion: 2.1.0
 metadata:
-  name: data-sci-fingerprint
+  name: datasci-fingerprint
 projects:
-  - name: data-sci-fingerprint
+  - name: datasci-fingerprint
     git:
       remotes:
         origin: "https://github.com/redhat-na-ssa/datasci-fingerprint"
