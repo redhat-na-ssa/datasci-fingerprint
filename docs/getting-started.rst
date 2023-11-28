@@ -12,9 +12,9 @@ git clone https://github.com/redhat-na-ssa/datasci-fingerprint.git
 cd datasci-fingerprint/
 
 # run bootstrap to provision the demo on your cluster
-./setup.sh
+./scripts/bootstrap.sh
 
-# optionally, you can `source ./scripts/bootstrap.sh` and run commands individually, i.e.
+# optionally, you can `. ./scripts/bootstrap.sh` and run commands individually, i.e.
 setup_demo
 delete_demo
 ```
