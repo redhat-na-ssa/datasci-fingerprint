@@ -1,0 +1,42 @@
+schemaVersion: 2.1.0
+metadata:
+  name: data-sci-fingerprint
+projects:
+  - name: data-sci-fingerprint
+    git:
+      remotes:
+        origin: "https://github.com/redhat-na-ssa/datasci-fingerprint"
+      checkoutFrom:
+        revision: main
+components:
+  - container:
+      # image: image-registry.openshift-image-registry.svc:5000/registry/udi-cuda:latest
+      image: ghcr.io/redhat-na-ssa/udi-cuda:11.8.0-cudnn8-devel-ubi8-python39
+      sourceMapping: /projects
+    name: universal-developer-image
+    attributes:
+      container-overrides:
+        resources:
+          limits:
+            memory: 16Gi # you can edit this live
+            nvidia.com/gpu: '1'
+      controller.devfile.io/merge-contribution: true
+      # memoryLimit: 16Gi
+      # cpuLimit: 1000m
+      mountSources: true
+      sourceMapping: /projects
+      volumeMounts:
+        - name: venv
+          path: /home/user/.venv
+  - name: venv
+    volume:
+      size: 1G
+#commands:
+#  - exec:
+#      commandLine: python -m venv .venv && . .venv/bin/activate && pip install pip -U && pip install -r requirements.txt
+#      component: python
+#      group:
+#        kind: run
+#      label: Configure python
+#      workingDir: ${PROJECTS_ROOT}/devspaces-gpu
+#    id: run
