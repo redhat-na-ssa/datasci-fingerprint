@@ -13,6 +13,7 @@ nvidia-cuda-nvrtc-cu11
 nvidia-cudnn-cu11
 opencv-python~=4.8
 pipenv==2022.11.30
+plotly==5.18.*
 python-dotenv==0.21.*
 sagemaker==2.121.2
 scikit-learn>=1.0.2
