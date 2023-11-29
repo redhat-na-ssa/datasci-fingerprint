@@ -46,7 +46,7 @@ setup_dataset(){
   tar -Jxf "${SCRATCH}"/.raw/left.tar.xz -C "${SCRATCH}"/train/ && \
   tar -Jxf "${SCRATCH}"/.raw/right.tar.xz -C "${SCRATCH}"/train/ && \
   tar -Jxf "${SCRATCH}"/.raw/real.tar.xz -C "${SCRATCH}" && \
-  tar -Jxf "${SCRATCH}"/.raw/model-v1-full.tar.xz -C "${SCRATCH}"/models
+  tar -Jxf "${SCRATCH}"/.raw/hand_v1.tar.xz -C "${SCRATCH}"/models
 
 }
 
