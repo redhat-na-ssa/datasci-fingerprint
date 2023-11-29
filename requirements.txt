@@ -19,7 +19,6 @@ scikit-learn>=1.0.2
 seaborn==0.12.1
 tensorflow-estimator==2.11.0
 tensorflow-io-gcs-filesystem==0.28.0
-tensorflow==2.11.0
 tensorflow==2.14
 tensorflow_datasets~=4.9
 
