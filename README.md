@@ -16,6 +16,12 @@ This tutorial demonstrates a basic machine learning workflow to create an image 
 
 Go to [notebooks](notebooks) to get started
 
+Local Development
+
+```
+scripts/bootstrap.sh
+```
+
 ## Additional Resources
 
 - [Cornell University - Research Paper](https://arxiv.org/abs/1807.10609)
